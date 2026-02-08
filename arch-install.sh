@@ -51,28 +51,28 @@ fi
 # Разметка диска
 echo -e "\n\e[1;32m[→] Создание разделов...\e[0m"
 (
-echo g              # Создать новую GPT таблицу
-echo n              # Новый раздел (EFI)
-echo 1              # Номер раздела 1
-echo                # Начало по умолчанию
-echo +1G            # Размер 1G
-echo t              # Сменить тип
-echo 1              # EFI System
-echo n              # Новый раздел (Swap)
-echo 2              # Номер раздела 2
-echo                # Начало по умолчанию
-echo +4G            # Размер 4G
-echo t              # Сменить тип
-echo 2              # Выбрать раздел 2
-echo 19             # Linux Swap
-echo n              # Новый раздел (Root)
-echo 3              # Номер раздела 3
-echo                # Начало по умолчанию
-echo                # Весь оставшийся диск
-echo t              # Сменить тип
-echo 3              # Выбрать раздел 3
-echo 20             # Linux filesystem
-echo w              # Записать изменения
+echo g        
+echo n         
+echo 1          
+echo             
+echo +1G    
+echo t          
+echo 1           
+echo n           
+echo 2            
+echo            
+echo +4G      
+echo t         
+echo 2           
+echo 19          
+echo n            
+echo 3             
+echo                
+echo             
+echo t              
+echo 3              
+echo 20             
+echo w              
 ) | sudo fdisk -W always "$disk" || { echo -e "\e[1;31m[✗] Ошибка при разметке диска!\e[0m"; exit 1; }
 
 # Синхронизация и ожидание появления разделов
